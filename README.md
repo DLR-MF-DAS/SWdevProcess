@@ -346,4 +346,64 @@ As an exercise, you can:
 - Build documentation using pdoc and open it in your browser
 - Add a GitHub action to automatically update and host documentation when a push is done to the repository or a pull request is merged
 
+## Publishing Your Package on PyPi
+
+This part will serve two purposes:
+- Learning about the CD (Continous Delivery) in CI/CD
+- Make your software publicly accessible
+
+Packaging software is usually time consuming and error prone if done by hand, so we will learn how to do it automatically. The goal is to have a package be delivered automatically upon each release of your software. To this aim, we will use PyPi: it stands for Python Package Index and it is the repository used by the pip package manager.
+
+First, create a [PyPi account](https://pypi.org/account/register/) and **setup two-factor authentication**. **You will need an authenticator app** (e.g. Google Authenticator, Microsoft Authenticator, privacyIDEAAuthenticator, etc.). After doing this, setup a [PyPi API token](https://pypi.org/manage/account/token/) for your account. With the token in hand, create or edit your $HOME/.pypirc file adding these lines:
+
+
+```
+[pypi]
+username = __token__
+password = <the token value, including the `pypi-` prefix>
+```
+
+For instance, you must leave *__token__* as username, while you have to put your API token in the password field.
+
+Now make sure build and twine are installed:
+
+```
+pip install twine build
+```
+
+And you are **almost** ready to publish your package. The last step you need to take is to **rename** your project in the *pyproject.toml* file. Please enter a unique identifying name for your project otherwise you will get an error as you're trying to publish a package own by someone else who registered a package called like yours before (our initial *hello-world* will not work:)). After having done this, let's put our package on PyPi!
+
+```
+rm dist/*
+python -m build
+python -m twine upload dist/*
+```
+
+Great! You **and others** can now install your package with:
+
+```
+pip install your-package-name
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
