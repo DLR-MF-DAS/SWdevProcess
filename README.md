@@ -314,7 +314,36 @@ All other lines in the function must be deleted.
 
 ## Documenting your code
 
-Docstrings are the standard way to document your code in Python: they are multi-line strings that follow the method or class header. THey explain the method, its arguments and help users of your package understand what it does and how to call it. There are standards for how to write them and we recomment the Numpy on.
+Docstrings are the standard way to document your code in Python: they are multi-line strings that follow the method or class header. They explain the method, its arguments and help users of your package understand what it does and how to call it. There are standards for how to write them, and we recomment the Numpy one:
 
+```
+def add(a, b):
+	"""The sum of two numbers.
+	Parameters
+	----------
+	a: int
+	   First argument to be added
+	b: int
+	   Second argument to be added
+
+	Returns
+	-------
+	int
+	   The sum of 'x' and 'y'
+	"""
+```
+
+The tool we recommend for building documentaion is pdoc. You just have to:
+```
+mkdir doc
+pdoc src/yourmodule -o doc
+```
+
+And also publishing the documentation is very easy. You can harness GitHub Actions to this purpose by simply copying [this file](https://github.com/mitmproxy/pdoc/blob/main/.github/workflows/docs.yml) to *.github/workflows/* and edit it based on the comments in that file. Your documentation will now be at *https://username.github.io/reponame/*.
+
+As an exercise, you can:
+- Add docstrings to your code
+- Build documentation using pdoc and open it in your browser
+- Add a GitHub action to automatically update and host documentation when a push is done to the repository or a pull request is merged
 
 
