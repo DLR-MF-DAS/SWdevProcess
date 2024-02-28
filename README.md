@@ -303,7 +303,7 @@ In this exemplar case in the above image, you should keep only one version of th
 
 ```
 def hello_world():
-	print("Hello, World!")
+	print("Hallo Welt!")
 ```
 
 All other lines in the function must be deleted.
