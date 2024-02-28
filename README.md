@@ -410,12 +410,102 @@ And run it with
 pylama src/
 ```
 
-[Coveralls](https://coveralls.io/) is a service integrated with GitHub that gives you test coverage feedback. It also lets you display a badge on your GitHub repository showing your test coverage percentage (as a way to show people that you've taken this tutorial and know the value of testing). To add it to your GitHub repository, first [sign in](https://coveralls.io/sign-up) to Coveralls with your GitHub account. Then click on 'Add repos' and turn the coveralls switch on to your GitHub repository (the easiest is that this repo is public). Thus, click *start uploading coverage* and follow the instructions.
+[Coveralls](https://coveralls.io/) is a service integrated with GitHub that gives you test coverage feedback. It also lets you display a badge on your GitHub repository showing your test coverage percentage (as a way to show people that you've taken this tutorial and know the value of testing). To add it to your GitHub repository, first [sign in](https://coveralls.io/sign-up) to Coveralls with your GitHub account. Then click on 'Add repos' and turn the coveralls switch on to your GitHub repository (the easiest is that this repo is public). Thus, click *start uploading coverage*. Install coveralls-python:
+
+```
+pip install coveralls
+```
+
+And launch the code coverage process:
 
 
+```
+coverage run --source=src/example_package src/example_package/example.py tests
+```
+
+Now copy your **COVERALLS_REPO_TOKEN** from the coveralls webpage regarding your repo and type:
+
+```
+COVERALLS_REPO_TOKEN=your_personal_token coveralls
+```
+
+At the end of the process you will get a link with the code coverage and the code to embed its badge on your repo's README file :)
+
+## Design by Contract
 
 
+```
+def int_divide(a, b):
+	assert(isinstance(a, int))
+	assert(isinstance(b, int))
+	assert(b != 0)
+	return a / b
+```
 
+The use of **assert** to check method arguments is a rudimentary form of desgin by contract. And if used extensively it can greatly help you debug your code. Design by Contract (DbC) is an extension of the idea using *assert* to check correctness of programs. Programs designed using DbC use the following three checks:
+- Precondition - needs to be satisfied before the method is executed
+- Postcondition - needs to be satisfied after the method is exectued
+- Invariant - needs to be satisfied at all times during the program execution
+
+Design by contract helps bring some of the advantages of static langauges like C++/Haskell etc. to a dynamic language like Python.
+
+We will be using [deal](https://deal.readthedocs.io/) which adds DbC functionality to Python:
+
+```
+pip install deal
+```
+
+You can now add preconditions with @deal.pre:
+
+```
+@deal.pre(lambda *args: all(arg > 0 for arg in args))
+def sum_positive(*args):
+	return sum(args)
+```
+
+```
+sum_positive(1, 2, 3, 4)
+# 10
+
+sum_positive(1, 2, -3, 4)
+# PreContractError: expected all(arg > 0 for arg in args) (where args=(1, 2, -3, 4))
+```
+
+Postconditions with @deal.post or @deal.ensure:
+
+```
+@deal.ensure(lambda x, result: x != result)
+def double(x):
+	return x * 2
+
+double(2)
+# 4
+double(0)
+# PostContractError: expected x != result (where result=0, x=0)
+```
+
+And invariant conditions with @deal.inv:
+
+```
+@deal.inv(lambda post: post.likes >= 0)
+class Post:
+	likes = 0
+
+post = Post()
+
+post.likes = 10
+
+post.likes = -10
+
+# InvContractError: expected post.likes >= 0
+
+type(post)
+# deal.core.PostInvarianted
+```
+
+## Basic Project Management with Kanban
+
+Kanban is a method to visualize the state of the project popularized by Taiichi Ohno from Toyota
 
 
 
