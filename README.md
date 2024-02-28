@@ -385,11 +385,32 @@ Great! You **and others** can now install your package with:
 pip install your-package-name
 ```
 
+As a last step, let GitHub Actions publish your package for you when a new release is available :) Edit the *run* part of *.github/workflows* like follows:
 
 
+```
+run: |
+        pytest tests/
+        twine upload dist/*
+```
 
+## Static Code Analysis
 
+Static code analysis tools are used to enforce certain simple quality standards on your code. For example, they can check that the code is formatted according to a chosen coding style; some can also check for common simple bugs in your code. Other common usage is to calculate the test coverage of your code (which lines are covered by tests and which are not). 
 
+**Linters** do some basic static checks of your code and are able to catch simple bugs and give warning (e.g. if a function is imported but not used). [Pylama](https://github.com/klen/pylama) is a project that encompasses many such tools. Install it with:
+
+```
+pip install pylama
+```
+
+And run it with
+
+```
+pylama src/
+```
+
+[Coveralls](https://coveralls.io/) is a service integrated with GitHub that gives you test coverage feedback. It also lets you display a badge on your GitHub repository showing your test coverage percentage (as a way to show people that you've taken this tutorial and know the value of testing). To add it to your GitHub repository, first [sign in](https://coveralls.io/sign-up) to Coveralls with your GitHub account. Then click on 'Add repos' and turn the coveralls switch on to your GitHub repository (the easiest is that this repo is public). Thus, click *start uploading coverage* and follow the instructions.
 
 
 
