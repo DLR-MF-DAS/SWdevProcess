@@ -10,6 +10,7 @@ With this tutorial we want to guide you through a tested and functional way of s
 - Publishing a Python package
 - Static code analysis tools
 - Design by Contract using Deal
+
 Every lesson also include elements of CI/CD since we are going to **automate** all the steps.
 
 ## Create, build and install a Python package
