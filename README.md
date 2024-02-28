@@ -505,7 +505,12 @@ type(post)
 
 ## Basic Project Management with Kanban
 
-Kanban is a method to visualize the state of the project popularized by Taiichi Ohno from Toyota
+Kanban is a method to visualize the state of the project popularized by Taiichi Ohno from Toyota. Tasks are symbolized by cards placed on a board. This cards contain a description of the task, who it is assigned to, its priority and deadline.
+Tasks are place into columns on the board which can be customized. In software projects the most common columns are "To Do", "In Progress", and "Done". The cards are moved from left to right depending on their status. This allows for a quick overview of the state of the project. A board is usually created for a relatively self contained project; for example a new feature.
+
+Kanban is a staple of many Agile methodologies.
+
+
 
 
 
