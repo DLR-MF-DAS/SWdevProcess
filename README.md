@@ -1,6 +1,6 @@
 # Software development in MF-DAS
 
-With this tutorial we want to guide you through a tested and functional way of starting your new Python project in MF-DAS. This will hopefully help you and others in understanding and modifying the software you created :)
+With this tutorial we want to guide you through a tested and functional way of starting your new Python project in MF-DAS. This will hopefully help you and others in understanding, modifying and deploying your project.
 
 ## Agenda
 - Learn how to create, build and install a Python package
@@ -170,7 +170,7 @@ In order to set up CI/CD for our package, let move to our repository webpage on 
 
 ![GitHub actions](imgs/actions-highlighted.png)
 
-This will create a new directory called .github/workflows in which you will put your CI/CD scripts in YAML format. By default, GitHus is creating *python-package.yml*. Edit this file such that the last line states the following instruction:
+This will create a new directory called .github/workflows in which you will put your CI/CD scripts in YAML format. By default, GitHub is creating *python-package.yml*. Edit this file such that the last line states the following instruction:
 ```
 pytest tests/
 ```
@@ -300,10 +300,10 @@ In this case, conflicts need to be resolved by hand:
 
 ![merge-no-conflict](imgs/resolution-2.png)
 
-In this exemplar case in the above image, you should keep only one version of the *hello_world* function, e.g.:
+In this exemplar case in the above image, you should keep only one version of the *hello* function, e.g.:
 
 ```
-def hello_world():
+def hello():
 	print("Hallo Welt!")
 ```
 
@@ -360,7 +360,7 @@ username = __token__
 password = <the token value, including the `pypi-` prefix>
 ```
 
-For instance, you must leave *__token__* as username, while you have to put your API token in the password field.
+For instance, you must leave ```__token__``` as username, while you have to put your API token in the password field.
 
 Now make sure build and twine are installed:
 
