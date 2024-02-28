@@ -235,8 +235,6 @@ def hello():
 	print("Ciao mondo!")
 ```
 
-Italian speakers will understand ;)
-
 To look at what changed in your local copy of the repo, you can always type:
 
 ```
@@ -247,7 +245,7 @@ Now we are ready to commit our change. From the project root:
 
 ```
 git add src/example_package/example.py
-git commit -m 'changed hello function message since I am Italian'
+git commit -m 'changed hello function message for Italian speakers'
 ```
 
 As a rule, commit messages should describe what was changed, where and why.
