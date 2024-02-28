@@ -292,12 +292,12 @@ Once everyone is happy, changes can be merged.
 
 When opening a pull request, conflicts may arise: these appear when the same files have been changed in the main branch and in the branch of the pull request:
 
-![merge-no-conflict](imgs/conflicts.png)
+![merge-no-conflict](imgs/conflicts-2.png)
 
 
 In this case, conflicts need to be resolved by hand:
 
-![merge-no-conflict](imgs/resolution.png)
+![merge-no-conflict](imgs/resolution-2.png)
 
 In this exemplar case in the above image, you should keep only one version of the *hello_world* function, e.g.:
 
