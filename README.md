@@ -510,16 +510,6 @@ Tasks are place into columns on the board which can be customized. In software p
 
 Kanban is a staple of many Agile methodologies.
 
+![kanban](imgs/Kanban.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
+You can setup a Kanban project in your GitHub repository via the Projects functionality. It is closely integrated with the rest of GitHub to reference Pull Requests and Issues from the Issue tracker.
